@@ -1,0 +1,6 @@
+name: KitTemplate
+version: 1.0
+description: This is a template.
+author: TribalInstincts
+main: com.tribalinstincts.minecraft.nexus.core.KitTemplate
+database: false
