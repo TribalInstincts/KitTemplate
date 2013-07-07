@@ -8,6 +8,11 @@ import org.bukkit.event.Listener;
 import com.tribalinstincts.minecraft.nexus.core.NexusPlayer;
 import com.tribalinstincts.minecraft.nexus.modules.kit.KitManager;
 
+/**
+ * 
+ * The Kit class to be extended to for a kit.
+ *
+ */
 public class Kit implements Listener{
 	
 	NexusPlayer np;
@@ -16,6 +21,10 @@ public class Kit implements Listener{
 	public static int Tier = -1;
 	public static String Description = "This is not a kit!";
 	
+	/**
+	 * Gets the name of the kit.
+	 * @return name of the kit.
+	 */
 	public String getName(){
 		try {
 			return (String)this.getClass().getDeclaredField("Name").get(null);
@@ -25,6 +34,10 @@ public class Kit implements Listener{
 		}
 	}
 	
+	/**
+	 * Gets the tier of the kit.
+	 * @return tier of the kit.
+	 */
 	public int getTier(){
 		try {
 			return (int)this.getClass().getDeclaredField("Tier").get(null);
@@ -34,6 +47,10 @@ public class Kit implements Listener{
 		}
 	}
 	
+	/**
+	 * Gets the description of the kit.
+	 * @return description of the kit.
+	 */
 	public String getDescription(){
 		try {
 			return (String)this.getClass().getDeclaredField("Description").get(null);
@@ -42,12 +59,19 @@ public class Kit implements Listener{
 			return null;
 		}
 	}
-	
+	/**
+	 * Initializes the kit for the player.
+	 * @param manager The {@link KitManager} of the plugin.
+	 * @param np The {@link NexusPlayer} to initialize the kit for.
+	 */
 	public Kit(KitManager manager, NexusPlayer np){
 		this.manager = manager;
 		this.np = np;
 	}
 	
+	/**
+	 * Unregisters this listener to the plugin.
+	 */
 	public void unregisterListener(){
 		HandlerList.unregisterAll(this);
 	}
@@ -55,9 +79,12 @@ public class Kit implements Listener{
 	public void timerTick(){ }
 	public void giveStartingItems(){ }
 	
+	/**
+	 * Is the entity the {@link NexusPlayer} using the kit.
+	 * @param entity An entity.
+	 * @return true if the entity is the NexusPlayer, if not, false.
+	 */
 	boolean isEntityThisPlayer(Entity entity){
-		if(entity instanceof Player && ((Player)entity) == this.np.getPlayer()) return true;
-		return false;
+		return (entity instanceof Player && ((Player)entity) == this.np.getPlayer()) ? true : false;
 	}
-	
 }
