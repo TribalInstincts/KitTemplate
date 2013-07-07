@@ -36,7 +36,7 @@ public class Tier2ExampleKit extends Kit {
      */
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onPlayerToggleSneakEvent(PlayerToggleSneakEvent event) {
-		if(!isEntityThisPlayer(event.getPlayer())) return;
+		if(this.isEntityThisPlayer(event.getPlayer()) == false) return;
 		if(event.isSneaking()){
 			event.getPlayer().setVelocity(event.getPlayer().getLocation().getDirection().multiply(7));
 			event.getPlayer().setFallDistance(0);
@@ -49,7 +49,7 @@ public class Tier2ExampleKit extends Kit {
 	 */
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onEntityDamageEvent(EntityDamageEvent event) {
-		if(!isEntityThisPlayer(event.getEntity())) return;
+		if(this.isEntityThisPlayer(event.getEntity()) == false) return;
 		if(event.getCause() == DamageCause.FALL){
 			createCrater(event.getEntity().getFallDistance());
 		}
