@@ -63,4 +63,8 @@ public class NexusPlayer {
 	public NexusPlayer getLastDamageBy() {
 		return this.lastDamageBy;
 	}
+
+	public Kit getKit() {
+		return this.kit;
+	}
 }

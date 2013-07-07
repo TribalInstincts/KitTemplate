@@ -12,6 +12,7 @@ import com.tribalinstincts.minecraft.nexus.modules.kit.kits.Tier2ExampleKit;
 public class KitManager {
 
 	NexusCore core;
+	final KitTimeManager timeManager;
 	
 	/**
 	 * Initialize the KitManager
@@ -19,6 +20,7 @@ public class KitManager {
 	 */
 	public KitManager(NexusCore core) {
 		this.core = core;
+		this.timeManager = new KitTimeManager(this);
 	}
 
 	/**
@@ -28,5 +30,12 @@ public class KitManager {
 	public void addKitToPlayer(NexusPlayer np){
 		Kit kit = new Tier2ExampleKit(this, np);
 		np.setKit(kit);
+	}
+	
+	
+	public void processKitTimers(){
+		for(NexusPlayer np : core.getPlayerManager().getPlayers()){
+			np.getKit().timerTick();
+		}
 	}
 }

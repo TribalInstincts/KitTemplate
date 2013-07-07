@@ -1,5 +1,6 @@
 package com.tribalinstincts.minecraft.nexus.core;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,5 +87,9 @@ public class NexusPlayerManager implements Listener{
 				np.damageTakenFromPlayer(this.getNPlayer((Player)((Arrow)damager).getShooter()));
 			}
 		} 
+	}
+
+	public Collection<NexusPlayer> getPlayers() {
+		return this.players.values();
 	}
 }
