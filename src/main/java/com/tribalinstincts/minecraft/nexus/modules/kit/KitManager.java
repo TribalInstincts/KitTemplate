@@ -32,7 +32,9 @@ public class KitManager {
 		np.setKit(kit);
 	}
 	
-	
+	/**
+	 * Ticks down the timerTicks in the {@link Kit}s every second.
+	 */
 	public void processKitTimers(){
 		for(NexusPlayer np : core.getPlayerManager().getPlayers()){
 			np.getKit().timerTick();
